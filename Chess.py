@@ -57,8 +57,6 @@ def board_to_input(board):
         board_array[x, y, channel - 1] = 1
     return board_array
 
-
-
 # Function to load games from a single PGN file
 def load_games_from_file(pgn_file, limit=100000):
     positions, moves = [], []
@@ -87,7 +85,7 @@ def load_data_from_multiple_files(pgn_files, limit_per_file=100000):
     # Combine all data into single arrays
     return np.concatenate(all_positions), np.concatenate(all_moves)
 
-# Build the neural network model
+# Build the CNN
 def build_model():
     model = Sequential([
         Conv2D(64, (3, 3), activation='relu', input_shape=(8, 8, 12)),
@@ -251,6 +249,10 @@ if __name__ == "__main__":
     print(f"Combined positions shape: {positions.shape}")
     print(f"Combined move indices shape: {move_indices.shape}")
     
+        ###############
+        #Uncomment The below section to train the model on the data and comment the above section
+        ############### 
+
     #     # Load the existing model
     # model_path = "./chess_model.h5"
     # try:
